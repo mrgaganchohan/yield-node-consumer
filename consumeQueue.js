@@ -16,6 +16,7 @@ const consumeQueue = async() => {
     let response = ""
     if (myMessages.length===1){
         response = myMessages[0].body
+		await receiver.completeMessage(myMessages[0]);
     }
     else{
         response = "Queue is empty"
