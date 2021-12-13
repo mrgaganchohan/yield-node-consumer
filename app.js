@@ -3,11 +3,11 @@ var cors = require('cors')
 const { consumeQueue } = require('./consumeQueue')
 
 const app = express()
-const port = 5001
+const port = process.env.PORT || 5001
 
 app.use(cors())
 app.get('/', async(req, res) => {
-  res.send("Success response")
+  res.send("Success response Testing consumer pipeline")
 })
 app.get('/consumeQueue', async(req, res) => {
   let response = await consumeQueue()
@@ -15,6 +15,4 @@ app.get('/consumeQueue', async(req, res) => {
 })
 
 
-app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`)
-})
+app.listen(port, '0.0.0.0')
